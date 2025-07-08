@@ -1,7 +1,7 @@
 
-# 🔧 UART Transmitter Verification
+# UART Transmitter Verification
 
-## 📘 Description
+## Description
 
 This project focuses on the **functional and formal verification** of a simplified **UART Transmitter** design module using **SystemVerilog**, **UVM**, and **Cocotb** methodologies. The design implements a basic UART transmission protocol with optional parity support and busy indication.
 
@@ -11,7 +11,7 @@ The verification process includes:
 - **Cocotb-based verification** for a modern Python-based test environment with reusable test logic.
 - Detailed reports for **code coverage**, **functional coverage**, and **assertion coverage**.
 
-## 📁 Repository Structure
+## Repository Structure
 
 ```
 .
@@ -37,11 +37,10 @@ The verification process includes:
 ├── cocotb/                      # Cocotb Python-based verification
 │   ├── test_uart_tx.py          # Cocotb testbench
 │   └── Makefile                 # Cocotb makefile
-├── Verification_of_UART_Transmitter.pdf  # Project documentation
 └── README.md
 ```
 
-## 🛠️ UART Transmitter Design
+## UART Transmitter Design
 
 - **Inputs**: `clk`, `reset`, `P_DATA[7:0]`, `PAR_EN`, `PAR_TYP`, `DATA_VALID`
 - **Outputs**: `TX_OUT`, `Busy`
@@ -50,7 +49,7 @@ The verification process includes:
   - Parity selection: Even or Odd based on `PAR_TYP`
   - `Busy` signal to prevent accepting new data mid-transmission
 
-## ✅ Verification Overview
+## Verification Overview
 
 ### 1. **SystemVerilog Part**
 - **Directed tests** using interface and monitors
@@ -75,14 +74,6 @@ The verification process includes:
 - Test scenarios written in Python
 - Easy waveform generation and self-checking using `assert` statements
 - Useful for integration with CI/CD systems
-
-## 📊 Coverage Highlights
-
-| Type              | Goal       | Achieved |
-|-------------------|------------|----------|
-| Code Coverage     | 100%       | ✅        |
-| Functional Coverage | 100%     | ✅        |
-| Assertion Coverage | ≥12 Checks | ✅        |
 
 ## 🚀 How to Run
 
