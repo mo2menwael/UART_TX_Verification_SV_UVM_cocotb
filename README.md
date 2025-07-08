@@ -43,6 +43,7 @@ The verification process includes:
 │   ├── UART_TX_SVA.sv              # SystemVerilog Assertions
 │   ├── Config_obj.sv               # UVM Configuration object
 │   ├── run.do                      # Simulation run script
+│   ├── UART_TX.list                # Sources list
 │   └── coverage_reports/           # Code, functional, and assertions coverage
 ├── cocotb/
 │   ├── UART_TX.v                   # UART Transmitter RTL design
