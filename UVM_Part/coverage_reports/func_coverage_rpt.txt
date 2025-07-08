@@ -1,0 +1,82 @@
+COVERGROUP COVERAGE:
+-----------------------------------------------------------------------------------------------
+Covergroup                                             Metric       Goal    Status               
+                                                                                              
+-----------------------------------------------------------------------------------------------
+ TYPE /coverage_pkg/UART_TX_coverage/cvr_gp            100.0%        100    Covered              
+    covered/total bins:                                    28         28                      
+    missing/total bins:                                     0         28                      
+    % Hit:                                             100.0%        100                      
+    Coverpoint cvr_gp::Reset_Coverage                  100.0%        100    Covered              
+        covered/total bins:                                 2          2                      
+        missing/total bins:                                 0          2                      
+        % Hit:                                         100.0%        100                      
+        bin reset_active                                  271          1    Covered              
+        bin no_reset                                    49393          1    Covered              
+    Coverpoint cvr_gp::PAR_EN_Coverage                 100.0%        100    Covered              
+        covered/total bins:                                 2          2                      
+        missing/total bins:                                 0          2                      
+        % Hit:                                         100.0%        100                      
+        bin parity_enabled                              13128          1    Covered              
+        bin parity_disabled                             36265          1    Covered              
+    Coverpoint cvr_gp::PAR_TYP_Coverage                100.0%        100    Covered              
+        covered/total bins:                                 2          2                      
+        missing/total bins:                                 0          2                      
+        % Hit:                                         100.0%        100                      
+        bin odd_parity                                  24398          1    Covered              
+        bin even_parity                                 24995          1    Covered              
+    Coverpoint cvr_gp::DATA_VALID_Coverage             100.0%        100    Covered              
+        covered/total bins:                                 2          2                      
+        missing/total bins:                                 0          2                      
+        % Hit:                                         100.0%        100                      
+        bin valid_data                                   4348          1    Covered              
+        bin invalid_data                                45045          1    Covered              
+    Coverpoint cvr_gp::P_DATA_Coverage                 100.0%        100    Covered              
+        covered/total bins:                                 3          3                      
+        missing/total bins:                                 0          3                      
+        % Hit:                                         100.0%        100                      
+        bin min_value                                     179          1    Covered              
+        bin max_value                                    1624          1    Covered              
+        bin alternating_value                             270          1    Covered              
+        default bin default_bins                        47320               Occurred             
+    Coverpoint cvr_gp::TX_OUT_Coverage                 100.0%        100    Covered              
+        covered/total bins:                                 2          2                      
+        missing/total bins:                                 0          2                      
+        % Hit:                                         100.0%        100                      
+        bin one                                         28681          1    Covered              
+        bin zero                                        20712          1    Covered              
+    Coverpoint cvr_gp::Busy_Coverage                   100.0%        100    Covered              
+        covered/total bins:                                 2          2                      
+        missing/total bins:                                 0          2                      
+        % Hit:                                         100.0%        100                      
+        bin one                                         48767          1    Covered              
+        bin zero                                          626          1    Covered              
+    Cross cvr_gp::PAR_EN__PAR_TYP_CROSS                100.0%        100    Covered              
+        covered/total bins:                                 4          4                      
+        missing/total bins:                                 0          4                      
+        % Hit:                                         100.0%        100                      
+        bin <parity_enabled,odd_parity>                  6633          1    Covered              
+        bin <parity_disabled,odd_parity>                17765          1    Covered              
+        bin <parity_enabled,even_parity>                 6495          1    Covered              
+        bin <parity_disabled,even_parity>               18500          1    Covered              
+    Cross cvr_gp::P_DATA__DATA_VALID_CROSS             100.0%        100    Covered              
+        covered/total bins:                                 6          6                      
+        missing/total bins:                                 0          6                      
+        % Hit:                                         100.0%        100                      
+        bin <min_value,valid_data>                         16          1    Covered              
+        bin <max_value,valid_data>                        143          1    Covered              
+        bin <alternating_value,valid_data>                 24          1    Covered              
+        bin <min_value,invalid_data>                      163          1    Covered              
+        bin <max_value,invalid_data>                     1481          1    Covered              
+        bin <alternating_value,invalid_data>              246          1    Covered              
+    Cross cvr_gp::TX_OUT__Busy_CROSS                   100.0%        100    Covered              
+        covered/total bins:                                 3          3                      
+        missing/total bins:                                 0          3                      
+        % Hit:                                         100.0%        100                      
+        illegal_bin NO_zero_zero                            0               ZERO                 
+        bin one_one                                     28055          1    Covered              
+        bin one_zero                                      626          1    Covered              
+        bin zero_one                                    20712          1    Covered              
+ CLASS UART_TX_coverage
+
+TOTAL COVERGROUP COVERAGE: 100.0%  COVERGROUP TYPES: 1

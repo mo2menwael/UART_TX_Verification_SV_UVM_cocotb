@@ -1,0 +1,241 @@
+Coverage Report by DU with details
+
+=================================================================================
+=== Design Unit: work.UART_TX
+=================================================================================
+Statement Coverage:
+    Enabled Coverage            Active      Hits    Misses % Covered
+    ----------------            ------      ----    ------ ---------
+    Stmts                           22        22         0     100.0
+
+================================Statement Details================================
+
+Statement Coverage for Design Unit work.UART_TX --
+
+    Line         Item                      Count     Source 
+    ----         ----                      -----     ------ 
+  File UART_TX.sv
+    5                                                module UART_TX (UART_TX_if.DUT UART_TX_IF);
+    6                                                
+    7                                                parameter IDLE = 0, START = 1, DATA = 2, PARITY = 3, STOP = 4;
+    8                                                
+    9                                                reg [3:0] state = IDLE;
+    10                                               reg [3:0] counter = 0;
+    11                                               reg [7:0] data_reg;
+    12                                               reg parity_bit;
+    13                                               
+    14              1                      79553     always @(posedge UART_TX_IF.clk or negedge UART_TX_IF.reset) begin
+    15                                                   if (!UART_TX_IF.reset) begin
+    16              1                        499             state <= IDLE;
+    17              1                        499             UART_TX_IF.TX_OUT <= 1'b1;
+    18              1                        499             UART_TX_IF.Busy <= 1'b0;
+    19              1                        499             counter <= 0;
+    20                                                   end else begin
+    21                                                       case (state)
+    22                                                           IDLE: begin
+    23              1                       7748                     UART_TX_IF.TX_OUT <= 1'b1;
+    24              1                       7748                     UART_TX_IF.Busy <= 1'b0;
+    25              1                       7748                     counter <= 0;
+    26                                                               if (UART_TX_IF.DATA_VALID) begin
+    27              1                       6958                         data_reg <= UART_TX_IF.P_DATA;
+    28              1                       6958                         parity_bit <= (UART_TX_IF.PAR_TYP == 0) ? ~^UART_TX_IF.P_DATA : ^UART_TX_IF.P_DATA;
+    29              1                       6958                         state <= START;
+    30              1                       6958                         UART_TX_IF.Busy <= 1'b1;
+    31                                                               end
+    32                                                           end
+    33                                               
+    34                                                           START: begin
+    35              1                       6958                     UART_TX_IF.TX_OUT <= 1'b0;
+    36              1                       6958                     state <= DATA;
+    37              1                       6958                     counter <= 0;
+    38                                                           end
+    39                                               
+    40                                                           DATA: begin
+    41              1                      55656                     UART_TX_IF.TX_OUT <= data_reg[counter];
+    42              1                      55656                     counter <= counter + 1;
+    43                                                               if (counter == 7)
+    44              1                       6957                         state <= (UART_TX_IF.PAR_EN) ? PARITY : STOP;
+    45                                                           end
+    46                                               
+    47                                                           PARITY: begin
+    48              1                       1735                     UART_TX_IF.TX_OUT <= parity_bit;
+    49              1                       1735                     state <= STOP;
+    50                                                           end
+    51                                               
+    52                                                           STOP: begin
+    53              1                       6957                     UART_TX_IF.TX_OUT <= 1'b1;
+    54              1                       6957                     state <= IDLE;
+
+Branch Coverage:
+    Enabled Coverage            Active      Hits    Misses % Covered
+    ----------------            ------      ----    ------ ---------
+    Branches                        16        15         1      93.7
+
+================================Branch Details================================
+
+Branch Coverage for Design Unit work.UART_TX
+
+    Line         Item                      Count     Source 
+    ----         ----                      -----     ------ 
+  File UART_TX.sv
+------------------------------------IF Branch------------------------------------
+    15                                     79553     Count coming in to IF
+    15              1                        499         if (!UART_TX_IF.reset) begin
+    20              1                      79054         end else begin
+Branch totals: 2 hits of 2 branches = 100.0%
+
+------------------------------------CASE Branch------------------------------------
+    21                                     79054     Count coming in to CASE
+    22              1                       7748                 IDLE: begin
+    34              1                       6958                 START: begin
+    40              1                      55656                 DATA: begin
+    47              1                       1735                 PARITY: begin
+    52              1                       6957                 STOP: begin
+                                         ***0***     All False Count
+Branch totals: 5 hits of 6 branches = 83.3%
+
+------------------------------------IF Branch------------------------------------
+    26                                      7748     Count coming in to IF
+    26              1                       6958                     if (UART_TX_IF.DATA_VALID) begin
+                                             790     All False Count
+Branch totals: 2 hits of 2 branches = 100.0%
+
+------------------------------------IF Branch------------------------------------
+    28                                      6958     Count coming in to IF
+    28              1                       3474                         parity_bit <= (UART_TX_IF.PAR_TYP == 0) ? ~^UART_TX_IF.P_DATA : ^UART_TX_IF.P_DATA;
+    28              2                       3484                         parity_bit <= (UART_TX_IF.PAR_TYP == 0) ? ~^UART_TX_IF.P_DATA : ^UART_TX_IF.P_DATA;
+Branch totals: 2 hits of 2 branches = 100.0%
+
+------------------------------------IF Branch------------------------------------
+    43                                     55656     Count coming in to IF
+    43              1                       6957                     if (counter == 7)
+                                           48699     All False Count
+Branch totals: 2 hits of 2 branches = 100.0%
+
+------------------------------------IF Branch------------------------------------
+    44                                      6957     Count coming in to IF
+    44              1                       1735                         state <= (UART_TX_IF.PAR_EN) ? PARITY : STOP;
+    44              2                       5222                         state <= (UART_TX_IF.PAR_EN) ? PARITY : STOP;
+Branch totals: 2 hits of 2 branches = 100.0%
+
+
+Condition Coverage:
+    Enabled Coverage            Active   Covered    Misses % Covered
+    ----------------            ------      ----    ------ ---------
+    FEC Condition Terms              0         0         0     100.0
+Expression Coverage:
+    Enabled Coverage            Active   Covered    Misses % Covered
+    ----------------            ------      ----    ------ ---------
+    FEC Expression Terms             3         3         0     100.0
+
+================================Expression Details================================
+
+Expression Coverage for Design Unit work.UART_TX --
+
+  File UART_TX.sv
+-----------Focused Expression View (Bimodal)------------
+Line       28 Item    1  ((UART_TX_IF.PAR_TYP == 0)? ~^UART_TX_IF.P_DATA: ^UART_TX_IF.P_DATA)
+Expression totals: 3 of 3 input terms covered = 100.0%
+
+                   Input Term   Covered  Reason for no coverage                  Hint
+                  -----------  --------  --------------------------------------  --------------
+    (UART_TX_IF.PAR_TYP == 0)         Y
+          ~^UART_TX_IF.P_DATA         Y
+           ^UART_TX_IF.P_DATA         Y
+
+    Rows:   Hits(->0)   Hits(->1)  FEC Target                     Non-masking condition(s)           
+---------  ----------  ----------  --------------------           -----------------------------------
+ Row   1:           1           1  (UART_TX_IF.PAR_TYP == 0)_0    -                                  
+ Row   2:           1           0  (UART_TX_IF.PAR_TYP == 0)_1    -                                  
+ Row   3:           1           0  ~^UART_TX_IF.P_DATA_0          (UART_TX_IF.PAR_TYP == 0)          
+ Row   4:           0           1  ~^UART_TX_IF.P_DATA_1          (UART_TX_IF.PAR_TYP == 0)          
+ Row   5:           1           0  ^UART_TX_IF.P_DATA_0           ~(UART_TX_IF.PAR_TYP == 0)         
+ Row   6:           0           1  ^UART_TX_IF.P_DATA_1           ~(UART_TX_IF.PAR_TYP == 0)         
+
+
+
+FSM Coverage:
+    Enabled Coverage            Active      Hits    Misses % Covered
+    ----------------            ------      ----    ------ ---------
+    FSMs                                                       100.0
+        States                       5         5         0     100.0
+        Transitions                  6         6         0     100.0
+
+================================FSM Details================================
+
+FSM Coverage for Design Unit work.UART_TX --
+
+FSM_ID: state
+    Current State Object : state
+    ----------------------
+    State Value MapInfo :
+    ---------------------
+Line          State Name               Value
+----          ----------               -----
+  22                IDLE                   0
+  34               START                   1
+  40                DATA                   2
+  52                STOP                   4
+  47              PARITY                   3
+    Covered States :
+    ----------------
+                   State           Hit_count
+                   -----           ---------
+                    IDLE                7456
+                   START                6958
+                    DATA                6958
+                    STOP                6957
+                  PARITY                1735
+    Covered Transitions :
+    ---------------------
+Line            Trans_ID           Hit_count          Transition          
+----            --------           ---------          ----------          
+  29                   0                6958          IDLE -> START       
+  36                   1                6958          START -> DATA       
+  44                   3                5222          DATA -> STOP        
+  44                   4                1735          DATA -> PARITY      
+  54                   6                6957          STOP -> IDLE        
+  49                   7                1735          PARITY -> STOP      
+
+
+    Summary                     Active      Hits    Misses % Covered
+    -------                     ------      ----    ------ ---------
+        States                       5         5         0     100.0
+        Transitions                  6         6         0     100.0
+Toggle Coverage:
+    Enabled Coverage            Active      Hits    Misses % Covered
+    ----------------            ------      ----    ------ ---------
+    Toggle Bins                     32        32         0     100.0
+
+================================Toggle Details================================
+
+Toggle Coverage for Design Unit work.UART_TX
+
+                                              Node      1H->0L      0L->1H                          "Coverage"
+                                              ---------------------------------------------------------------
+                                        counter[0]           1           1                              100.00 
+                                        counter[1]           1           1                              100.00 
+                                        counter[2]           1           1                              100.00 
+                                        counter[3]           1           1                              100.00 
+                                       data_reg[0]           1           1                              100.00 
+                                       data_reg[1]           1           1                              100.00 
+                                       data_reg[2]           1           1                              100.00 
+                                       data_reg[3]           1           1                              100.00 
+                                       data_reg[4]           1           1                              100.00 
+                                       data_reg[5]           1           1                              100.00 
+                                       data_reg[6]           1           1                              100.00 
+                                       data_reg[7]           1           1                              100.00 
+                                        parity_bit           1           1                              100.00 
+                                          state[0]           1           1                              100.00 
+                                          state[1]           1           1                              100.00 
+                                          state[2]           1           1                              100.00 
+
+Total Node Count     =         16 
+Toggled Node Count   =         16 
+Untoggled Node Count =          0 
+
+Toggle Coverage      =      100.0% (32 of 32 bins)
+
+
+Total Coverage By Design Unit (filtered view): 98.7%
+

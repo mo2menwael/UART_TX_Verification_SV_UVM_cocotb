@@ -1,0 +1,81 @@
+
+DIRECTIVE COVERAGE:
+---------------------------------------------------------------------------------------------
+Name                                     Design Design   Lang File(Line)      Count Status    
+                                         Unit   UnitType                                      
+---------------------------------------------------------------------------------------------
+/UART_TX_top/DUT/UART_TX_SVA_inst/Reset_c 
+                                         UART_TX_SVA Verilog  SVA  UART_TX_SVA.sv(60)
+                                                                                245 Covered   
+/UART_TX_top/DUT/UART_TX_SVA_inst/Odd_Parity_c 
+                                         UART_TX_SVA Verilog  SVA  UART_TX_SVA.sv(140)
+                                                                                862 Covered   
+/UART_TX_top/DUT/UART_TX_SVA_inst/Even_Parity_c 
+                                         UART_TX_SVA Verilog  SVA  UART_TX_SVA.sv(143)
+                                                                                866 Covered   
+/UART_TX_top/DUT/UART_TX_SVA_inst/Start_Bit_c 
+                                         UART_TX_SVA Verilog  SVA  UART_TX_SVA.sv(146)
+                                                                               6912 Covered   
+/UART_TX_top/DUT/UART_TX_SVA_inst/Stop_Bit_With_Parity_c 
+                                         UART_TX_SVA Verilog  SVA  UART_TX_SVA.sv(149)
+                                                                               1670 Covered   
+/UART_TX_top/DUT/UART_TX_SVA_inst/Stop_Bit_Without_Parity_c 
+                                         UART_TX_SVA Verilog  SVA  UART_TX_SVA.sv(152)
+                                                                               5023 Covered   
+/UART_TX_top/DUT/UART_TX_SVA_inst/Busy_WithParity_c 
+                                         UART_TX_SVA Verilog  SVA  UART_TX_SVA.sv(155)
+                                                                               1728 Covered   
+/UART_TX_top/DUT/UART_TX_SVA_inst/Busy_WithoutParity_c 
+                                         UART_TX_SVA Verilog  SVA  UART_TX_SVA.sv(158)
+                                                                               5184 Covered   
+/UART_TX_top/DUT/UART_TX_SVA_inst/Data_Bits_c 
+                                         UART_TX_SVA Verilog  SVA  UART_TX_SVA.sv(161)
+                                                                               6912 Covered   
+/UART_TX_top/DUT/UART_TX_SVA_inst/Idle_When_Not_Busy_c 
+                                         UART_TX_SVA Verilog  SVA  UART_TX_SVA.sv(164)
+                                                                               1010 Covered   
+/UART_TX_top/DUT/UART_TX_SVA_inst/idle_state_txout_c 
+                                         UART_TX_SVA Verilog  SVA  UART_TX_SVA.sv(167)
+                                                                                764 Covered   
+/UART_TX_top/DUT/UART_TX_SVA_inst/reset_counter_IDLE_or_START_or_RESET_c 
+                                         UART_TX_SVA Verilog  SVA  UART_TX_SVA.sv(170)
+                                                                              14959 Covered   
+/UART_TX_top/DUT/UART_TX_SVA_inst/illegal_transitions_c 
+                                         UART_TX_SVA Verilog  SVA  UART_TX_SVA.sv(173)
+                                                                              79054 Covered   
+
+TOTAL DIRECTIVE COVERAGE: 100.0%  COVERS: 13
+
+ASSERTION RESULTS:
+-------------------------------------------------------
+Name                 File(Line)           Failure Pass 
+                                          Count   Count 
+-------------------------------------------------------
+/UART_TX_top/DUT/UART_TX_SVA_inst/Reset_a
+                     UART_TX_SVA.sv(59)         0     1
+/UART_TX_top/DUT/UART_TX_SVA_inst/Odd_Parity_a
+                     UART_TX_SVA.sv(139)        0     1
+/UART_TX_top/DUT/UART_TX_SVA_inst/Even_Parity_a
+                     UART_TX_SVA.sv(142)        0     1
+/UART_TX_top/DUT/UART_TX_SVA_inst/Start_Bit_a
+                     UART_TX_SVA.sv(145)        0     1
+/UART_TX_top/DUT/UART_TX_SVA_inst/Stop_Bit_With_Parity_a
+                     UART_TX_SVA.sv(148)        0     1
+/UART_TX_top/DUT/UART_TX_SVA_inst/Stop_Bit_Without_Parity_a
+                     UART_TX_SVA.sv(151)        0     1
+/UART_TX_top/DUT/UART_TX_SVA_inst/Busy_WithParity_a
+                     UART_TX_SVA.sv(154)        0     1
+/UART_TX_top/DUT/UART_TX_SVA_inst/Busy_WithoutParity_a
+                     UART_TX_SVA.sv(157)        0     1
+/UART_TX_top/DUT/UART_TX_SVA_inst/Data_Bits_a
+                     UART_TX_SVA.sv(160)        0     1
+/UART_TX_top/DUT/UART_TX_SVA_inst/Idle_When_Not_Busy_a
+                     UART_TX_SVA.sv(163)        0     1
+/UART_TX_top/DUT/UART_TX_SVA_inst/idle_state_txout_a
+                     UART_TX_SVA.sv(166)        0     1
+/UART_TX_top/DUT/UART_TX_SVA_inst/reset_counter_IDLE_or_START_or_RESET_a
+                     UART_TX_SVA.sv(169)        0     1
+/UART_TX_top/DUT/UART_TX_SVA_inst/illegal_transitions_a
+                     UART_TX_SVA.sv(172)        0     1
+/UART_TX_top/TEST/Randomization_assertion
+                     UART_TX_TB.sv(34)          0     1
