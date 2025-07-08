@@ -36,10 +36,10 @@ The verification process includes:
 │   ├── UART_TX_test.sv             # UVM Test
 │   ├── UART_TX_sequence_item.sv    # UVM Sequence item
 │   ├── UART_TX_main_sequence.sv    # Main sequence logic
+│   ├── UART_TX_reset_sequence.sv   # Reset sequence
 │   ├── UART_TX_sequencer.sv        # Sequencer
 │   ├── UART_TX_if.sv               # Virtual interface
 │   ├── UART_TX_coverage.sv         # Functional coverage
-│   ├── UART_TX_reset_sequence.sv   # Reset sequence
 │   ├── UART_TX_SVA.sv              # SystemVerilog Assertions
 │   ├── Config_obj.sv               # UVM Configuration object
 │   ├── run.do                      # Simulation run script
